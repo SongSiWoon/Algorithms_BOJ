@@ -26,7 +26,5 @@ def bfs(n, k):
                     q.append((i, t+1))
     print(res_t)
     print(cnt)
-    print((10**5 + 1))
-    print((10**5+1))
     return
 bfs(n, k)
