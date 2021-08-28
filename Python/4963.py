@@ -27,6 +27,4 @@ while True:
             if matrix[i][j] == 1:
                 bfs(i,j)
                 cnt += 1
-    res.append(cnt)
-print(res)
-
+    print(cnt)
