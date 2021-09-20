@@ -38,6 +38,4 @@ for i in range(n):
         if len(deq)==0:
             print(-1)
         else:
-            print(deq[-1])
-
-            
+            print(deq[-1])         

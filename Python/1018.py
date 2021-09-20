@@ -14,7 +14,6 @@ for i in range(n-7):
                             cw += 1
                     if bd[a][b] != 'B':
                             cb += 1
-
                 else:
                     if bd[a][b] != 'B':
                             cw += 1

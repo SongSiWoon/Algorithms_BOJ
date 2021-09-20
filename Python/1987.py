@@ -1,3 +1,5 @@
+import sys
+input = sys.stdin.readline
 r, c = map(int, input().split())
 matrix = list(input() for i in range(r))
 visited = [False] * 26

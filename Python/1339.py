@@ -5,7 +5,6 @@ n = int(input())
 str = []
 for i in range(n):
     str.append(input().rstrip())
-print(str)
 dic = {}
 for s in str:
     l = len(s)-1
