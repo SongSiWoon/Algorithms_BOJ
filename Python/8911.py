@@ -1,48 +1,37 @@
 T = int(input())
 command = [input() for _ in range(T)]
+dx = [0, 1, 0, -1]
+dy = [1, 0, -1, 0]
 for com in command:
-    dir = 500
-    x, y = 0, 0
-    nx, ny = 0, 0
-    mx, rx = 0, 0
-    my, ry = 0, 0
+    pos_x = 0
+    pos_y = 0
+    pos_dir = 0
+    pos = [(0,0)]
     for c in com:
-        d = dir % 4
         if c == 'F':
-            if d == 0:
-                ny = y + 1
-            elif d == 1:
-                nx = x + 1
-            elif d == 2:
-                ny = y - 1
-            else:
-                nx = x - 1
+            pos_x = pos_x + dx[pos_dir]
+            pos_y = pos_y + dy[pos_dir]
         elif c == 'B':
-            if d == 0:
-                ny = y - 1
-            elif d == 1:
-                nx = x - 1
-            elif d == 2:
-                ny = y + 1
-            else:
-                nx = x + 1
+            pos_x = pos_x - dx[pos_dir]
+            pos_y = pos_y - dy[pos_dir]
         elif c == 'L':
-            dir -= 1
+            if pos_dir == 3:
+                pos_dir = 0
+            else:
+                pos_dir += 1
         else:
-            dir += 1
-        mx = max(mx, nx)
-        rx = min(rx, nx)
-        my = max(my, ny)
-        ry = min(ry, ny)
-        x = nx
-        y = ny
-    if rx<0:
-        rx = mx -rx
+            if pos_dir == 0:
+                pos_dir = 3
+            else:
+                pos_dir -= 1
+        pos.append((pos_x, pos_y))
+    if min(pos, key = lambda x: x[0])[0]<0:
+        width = max(pos, key=lambda x: x[0])[0] - min(pos, key=lambda x: x[0])[0]
     else:
-        rx = mx
-    if ry<0:
-        ry = my - ry
+        width = max(pos, key=lambda x: x[0])[0]
+    if min(pos, key=lambda x: x[1])[1]:
+        height = max(pos, key=lambda x: x[1])[1] - min(pos, key=lambda x: x[1])[1]
     else:
-        ry = my
-    print(rx*ry)
+        height = max(pos, key=lambda x: x[1])[1]
+    print(width * height)
 
