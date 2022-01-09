@@ -17,12 +17,12 @@ def sol(r, col):
     if r == N:
         cnt += 1
         return
-    else:
-        for c in range(N):
-            col[r] = c
-            if checkconflict(r, col):
-                sol(r+1, col)
-    return cnt
+    for c in range(N):
+        col[r] = c
+        if checkconflict(r, col):
+            sol(r+1, col)
+    return
 
 
-print(sol(0, col))
+sol(0, col)
+print(cnt)
